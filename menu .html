@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grand Lily Modern Noodle Restaurant</title>
+        <link href="css/theme.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: 'Poppins', sans-serif; background-color: #FDF6E3; color: #333333; line-height: 1.6; }
+            .header { text-align: center; padding: 40px 20px; background-color: #FFFFFF; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+            .title { font-size: 2.5rem; font-weight: 600; color: #8B4513; margin-bottom: 15px; }
+            .subtitle { font-size: 1.1rem; color: #A0522D; margin-bottom: 20px; }
+            .divider { width: 80px; height: 3px; background-color: #D2B48C; margin: 0 auto 20px; }
+            .menu-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+            .menu-title { text-align: center; font-size: 1.8rem; color: #8B4513; margin-bottom: 30px; }
+            .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; } /* Lebar minimum ditingkatkan lebih lanjut untuk ruang ekstra */
+            .menu-item { background: #FFFFFF; padding: 25px 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, background-color 0.3s ease; display: flex; align-items: flex-start; justify-content: space-between; overflow: hidden; gap: 20px; /* Gap ditingkatkan untuk jarak lebih */ height: auto; min-height: 80px; }
+            .menu-item:hover { transform: translateY(-5px); background-color: #FFF8DC; }
+            .menu-item img { width: 50px; height: 50px; border: 2px solid #8B4513; border-radius: 5px; margin-right: 0; object-fit: cover; flex-shrink: 0; }
+            .dish-name { font-weight: 500; color: #333333; flex-grow: 1; word-wrap: break-word; overflow-wrap: break-word; line-height: 1.5; text-align: left; /* Konsistensi rapi */ }
+            .price { color: #8B4513; font-weight: 600; flex-shrink: 0; align-self: flex-start; }
+            .footer { background-color: #FFFFFF; padding: 30px 20px; text-align: center; margin-top: 40px; box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); }
+            .footer-icon { margin-bottom: 20px; }
+            .contact-info { color: #A0522D; margin-bottom: 10px; }
+            .opening-hours { color: #A0522D; }
+            /* Gambar responsif */
+            .header img, .footer img, .menu-section img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+            
+            /* Responsive design */
+            @media (max-width: 1024px) { /* Tablet */
+                .title { font-size: 2.2rem; }
+                .menu-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; } /* Ditingkatkan dari 250px */
+                .menu-item { padding: 20px 18px; gap: 15px; /* Gap disesuaikan */ min-height: 70px; }
+                .menu-item img { width: 45px; height: 45px; }
+                .dish-name { line-height: 1.4; }
+            }
+            @media (max-width: 768px) { /* Tablet kecil dan HP besar */
+                .title { font-size: 2rem; }
+                .subtitle { font-size: 1rem; }
+                .header { padding: 30px 15px; }
+                .menu-section { padding: 30px 15px; }
+                .menu-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; } /* Ditingkatkan dari 220px */
+                .menu-item { padding: 18px 15px; flex-direction: column; align-items: flex-start; gap: 10px; min-height: 60px; }
+                .menu-item img { width: 40px; height: 40px; margin-bottom: 0; }
+                .dish-name { font-size: 0.9rem; margin-bottom: 5px; }
+                .price { font-size: 0.9rem; }
+                .footer { padding: 20px 15px; }
+                .contact-info, .opening-hours { font-size: 0.9rem; }
+            }
+            @media (max-width: 480px) { /* HP kecil */
+                .title { font-size: 1.8rem; }
+                .subtitle { font-size: 0.9rem; }
+                .header { padding: 20px 10px; }
+                .menu-section { padding: 20px 10px; }
+                .menu-grid { grid-template-columns: 1fr; gap: 10px; }
+                .menu-item { padding: 15px 12px; gap: 8px; min-height: 50px; }
+                .menu-item img { width: 35px; height: 35px; }
+                .dish-name { font-size: 0.85rem; margin-bottom: 5px; }
+                .price { font-size: 0.85rem; }
+                .footer { padding: 15px 10px; }
+                .contact-info, .opening-hours { font-size: 0.8rem; }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="title">GRAND LILY</h1>
+            <div class="header-icon"></div>
+            <p class="subtitle">Modern Noodle Restaurant est 1984</p>
+			 <p class="subtitle"> PORK NO LARD</p>
+            <div class="divider"></div>
+            <img src="https://media.discordapp.net/attachments/820606959576809472/1439169695159947275/image.png?ex=69198ab9&is=69183939&hm=0fd18024286aea1cb8c0c54ed60b6d89bba7f9834b63bf5d29ba91a2990f853d&=&format=webp&quality=lossless&width=1522&height=856" alt="Grand Lily Logo">
+            <section data-empty-placeholder></section>
+			<h2 class="menu-title"></h2>
+			<h2 class="menu-title">NEW MENU</h2>
+			<p class="subtitle">BAKSO GORENG</p>
+            <img src="https://media.discordapp.net/attachments/1297741629314170944/1439180377854836737/Bakso.png?ex=691994ac&is=6918432c&hm=8a2b8b91772550af9378fe610368e152f642595a51a332204c79ab77559ca653&=&format=webp&quality=lossless&width=1519&height=856" alt="Mie Kriting Pelangi">
+        </header>
+        <section class="menu-section">
+            <h2 class="menu-title">MENU</h2>
+            <section class="menu-section">
+                <h2 class="menu-title">MAKANAN</h2>
+                <div class="menu-grid">
+                    <div class="menu-item"><span class="dish-name">MIE KRITING AYAM JAMUR</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name"> MIE BASO PANGSIT</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">MIE KRITING TELOR</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">MIE LEBAR</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">MIE PELANGI</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name"> MIE HIJAU</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">MIE MERAH</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">KWETIAU AYAM JAMUR</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">BIHUN AYAM JAMUR</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name"> NASI CAMPUR HAINAM</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">NASI TIM</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">KARI AYAM (NASI/BIHUN)</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">YONG TAHU</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name"> BASO PANGSIT</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">NGOHIANG AYAM</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">PANGSIT GORENG</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">TELOR PINDANG</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">BAKSO GORENG</span><span class="price"></span></div>
+					
+                </div>
+            </section>
+            <section class="menu-section">
+                <h2 class="menu-title">MINUMAN</h2>
+                <div class="menu-grid">
+                    <div class="menu-item"><span class="dish-name">ES JERUK</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">ES LEMON TEA</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">LIANG TEH</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">SUSU KACANG</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">KOPI</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name"> ES TEH MANIS</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">TEH MANIS</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">TEH BOTOL</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">AQUA BOTOL</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">ES TEH TAWAR</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">TEH TAWAR</span><span class="price"></span></div>
+                    <div class="menu-item"><span class="dish-name">AQUA GELAS</span><span class="price"></span></div>
+					<div class="menu-item"><span class="dish-name">MINUMAN KOTAK</span><span class="price"></span></div>
+                </div>
+            </section>
+            <img src="https://media.discordapp.net/attachments/820606959576809472/1125379623119761499/pangsit_goreng.jpeg?ex=69185c72&is=69170af2&hm=892872cb5908665aa0a42752deb928316694ef49963382b5c855bd76ecd184e5&=&format=webp" alt="Pangsit Goreng" height="720" width="800">
+            <section data-empty-placeholder></section>
+            <footer class="footer">
+                <div class="footer-icon">
+                    <img src="https://media.discordapp.net/attachments/1140706286380531816/1439172302141919345/LOGO.png?ex=69198d27&is=69183ba7&hm=fb436ba73bf9984d6466fc2f54522235ea4f35e6d9160c898b41a2636f88de2a&=&format=webp&quality=lossless" alt="Grand Lily Logo" width="60" height="60">
+                </div>
+                <p class="contact-info">Kota wisata, Ruko Travalgar, Cibubur No.37 Blok H, Ciangsana, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 17435 | Telp:  0817-9863-223</p>
+                <p class="opening-hours">Buka setiap hari: 6.00 am</p>
+            </footer>
+    </body>
+</html>
