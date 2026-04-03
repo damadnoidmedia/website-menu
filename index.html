@@ -1,136 +1,791 @@
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-	<link rel="icon" href="gambar/LOGO.png" alt="Grand Lily Logo" width="60" height="60">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Grand Lily Mie Keriting P.Siantar</title>
-        <link href="css/theme.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { font-family: 'Poppins', sans-serif; background-color: #FDF6E3; color: #333333; line-height: 1.6; }
-            .header { text-align: center; padding: 40px 20px; background-color: #FFFFFF; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
-            .title { font-size: 2.5rem; font-weight: 600; color: #8B4513; margin-bottom: 15px; }
-            .subtitle { font-size: 1.1rem; color: #A0522D; margin-bottom: 20px; }
-            .divider { width: 80px; height: 3px; background-color: #D2B48C; margin: 0 auto 20px; }
-            .menu-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-            .menu-title { text-align: center; font-size: 1.8rem; color: #8B4513; margin-bottom: 30px; }
-            .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; } /* Lebar minimum ditingkatkan lebih lanjut untuk ruang ekstra */
-            .menu-item { background: #FFFFFF; padding: 25px 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, background-color 0.3s ease; display: flex; align-items: flex-start; justify-content: space-between; overflow: hidden; gap: 20px; /* Gap ditingkatkan untuk jarak lebih */ height: auto; min-height: 80px; }
-            .menu-item:hover { transform: translateY(-5px); background-color: #FFF8DC; }
-            .menu-item img { width: 50px; height: 50px; border: 2px solid #8B4513; border-radius: 5px; margin-right: 0; object-fit: cover; flex-shrink: 0; }
-            .dish-name { font-weight: 500; color: #333333; flex-grow: 1; word-wrap: break-word; overflow-wrap: break-word; line-height: 1.5; text-align: left; /* Konsistensi rapi */ }
-            .price { color: #8B4513; font-weight: 600; flex-shrink: 0; align-self: flex-start; }
-            .footer { background-color: #FFFFFF; padding: 30px 20px; text-align: center; margin-top: 40px; box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); }
-            .footer-icon { margin-bottom: 20px; }
-            .contact-info { color: #A0522D; margin-bottom: 10px; }
-            .opening-hours { color: #A0522D; }
-            /* Gambar responsif */
-            .header img, .footer img, .menu-section img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
-            
-            /* Responsive design */
-            @media (max-width: 1024px) { /* Tablet */
-                .title { font-size: 2.2rem; }
-                .menu-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; } /* Ditingkatkan dari 250px */
-                .menu-item { padding: 20px 18px; gap: 15px; /* Gap disesuaikan */ min-height: 70px; }
-                .menu-item img { width: 45px; height: 45px; }
-                .dish-name { line-height: 1.4; }
-            }
-            @media (max-width: 768px) { /* Tablet kecil dan HP besar */
-                .title { font-size: 2rem; }
-                .subtitle { font-size: 1rem; }
-                .header { padding: 30px 15px; }
-                .menu-section { padding: 30px 15px; }
-                .menu-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; } /* Ditingkatkan dari 220px */
-                .menu-item { padding: 18px 15px; flex-direction: column; align-items: flex-start; gap: 10px; min-height: 60px; }
-                .menu-item img { width: 40px; height: 40px; margin-bottom: 0; }
-                .dish-name { font-size: 0.9rem; margin-bottom: 5px; }
-                .price { font-size: 0.9rem; }
-                .footer { padding: 20px 15px; }
-                .contact-info, .opening-hours { font-size: 0.9rem; }
-            }
-            @media (max-width: 480px) { /* HP kecil */
-                .title { font-size: 1.8rem; }
-                .subtitle { font-size: 0.9rem; }
-                .header { padding: 20px 10px; }
-                .menu-section { padding: 20px 10px; }
-                .menu-grid { grid-template-columns: 1fr; gap: 10px; }
-                .menu-item { padding: 15px 12px; gap: 8px; min-height: 50px; }
-                .menu-item img { width: 35px; height: 35px; }
-                .dish-name { font-size: 0.85rem; margin-bottom: 5px; }
-                .price { font-size: 0.85rem; }
-                .footer { padding: 15px 10px; }
-                .contact-info, .opening-hours { font-size: 0.8rem; }
-            }
-        </style>
-    </head>
-    <body>
-        <header class="header">
-            <h1 class="title">GRAND LILY</h1>
-            <div class="header-icon"></div>
-            <p class="subtitle">EST 1984</p>
-			 <p class="subtitle">NO PORK NO LARD</p>
-            <div class="divider"></div>
-            <img src="gambar/banner.png" alt="Grand Lily Banner" width="1526" height="860">
-            <section data-empty-placeholder></section>
-			<h2 class="menu-title"></h2>
-			<h2 class="menu-title">NEW MENU</h2>
-			<p class="subtitle">BAKSO GORENG</p>
-            <img src="gambar/highlight.png" "Menu Highlight">
-        </header>
-        <section class="menu-section">
-            <h2 class="menu-title">MENU</h2>
-            <section class="menu-section">
-                <h2 class="menu-title">MAKANAN</h2>
-                <div class="menu-grid">
-                    <div class="menu-item"><span class="dish-name">MIE KRITING AYAM JAMUR</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name"> MIE BASO PANGSIT</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">MIE KRITING TELOR</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">MIE LEBAR</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">MIE PELANGI</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name"> MIE HIJAU</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">MIE MERAH</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">KWETIAU AYAM JAMUR</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">BIHUN AYAM JAMUR</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name"> NASI CAMPUR HAINAM</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">NASI TIM</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">KARI AYAM (NASI/BIHUN)</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">YONG TAHU</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name"> BASO PANGSIT</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">NGOHIANG AYAM</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">PANGSIT GORENG</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">TELOR PINDANG</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">BAKSO GORENG</span><span class="price"></span></div>
-					
-                </div>
-            </section>
-            <section class="menu-section">
-                <h2 class="menu-title">MINUMAN</h2>
-                <div class="menu-grid">
-                    <div class="menu-item"><span class="dish-name">ES JERUK</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">ES LEMON TEA</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">LIANG TEH</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">SUSU KACANG</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">KOPI</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name"> ES TEH MANIS</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">TEH MANIS</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">TEH BOTOL</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">AQUA BOTOL</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">ES TEH TAWAR</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">TEH TAWAR</span><span class="price"></span></div>
-                    <div class="menu-item"><span class="dish-name">AQUA GELAS</span><span class="price"></span></div>
-					<div class="menu-item"><span class="dish-name">MINUMAN KOTAK</span><span class="price"></span></div>
-                </div>
-            </section>
-            <img src="gambar/signature.png" alt="Grand Lily Banner" width="1526" height="860">
-            <section data-empty-placeholder></section>
-            <footer class="footer">
-                <div class="footer-icon">
-                    <img src="gambar/LOGO.png" alt="Grand Lily Logo" width="60" height="60">
-                </div>
-                <p class="contact-info">Kota wisata, Ruko Travalgar, Cibubur No.37 Blok H, Ciangsana, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 17435 | Telp:  +62 811-1245-313</p>
-                <p class="opening-hours">Buka setiap hari: 6.00 am</p>
-            </footer>
-    </body>
+<head>
+<link rel="icon" href="gambar/LOGO.png" alt="Grand Lily Logo" width="60" height="60">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Lily - Mie Keriting P.Siantar</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px system-ui, sans-serif;
+  background: #FDF6E3;
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.title {
+  font-size: 2rem;
+  color: #8B4513;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #A0522D;
+  font-size: 1rem;
+}
+
+.divider {
+  width: 50px;
+  height: 2px;
+  background: #D2B48C;
+  margin: 15px auto;
+}
+
+.menu-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.menu-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #8B4513;
+  margin: 20px 0;
+}
+
+.table-selection {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.1);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  gap: 12px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.table-btn {
+  padding: 15px 8px;
+  border: 2px solid #D2B48C;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 600;
+  color: #8B4513;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+}
+
+.table-btn:hover {
+  border-color: #8B4513;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139,69,19,.2);
+}
+
+.table-btn.active {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: #fff;
+  border-color: #8B4513;
+}
+
+.table-btn.selected::after {
+  content: '✓';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #25d366;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: 0 3px 10px rgba(37,211,102,.4);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.menu-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+  transition: .3s;
+  cursor: pointer;
+  padding: 12px;
+  position: relative;
+}
+
+.menu-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,.15);
+}
+
+.menu-checkbox {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #25d366;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  transition: .3s;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.menu-item input:checked + .menu-checkbox {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.dish-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  margin: 8px 0 4px;
+}
+
+.quantity-controls {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.95);
+  border-radius: 20px;
+  padding: 4px 8px;
+  gap: 8px;
+  opacity: 0;
+  transition: .3s;
+  backdrop-filter: blur(10px);
+}
+
+.menu-item input:checked ~ .quantity-controls {
+  opacity: 1;
+}
+
+.qty-btn {
+  background: #8B4513;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .2s;
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #A0522D;
+  transform: scale(1.1);
+}
+
+.qty-btn:disabled {
+  background: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.qty-display {
+  background: #fff;
+  border: 2px solid #D2B48C;
+  border-radius: 6px;
+  width: 35px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #8B4513;
+}
+
+.footer {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,.1);
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+  width: 55px;
+  height: 55px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 28px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,.3);
+  z-index: 100;
+  transition: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.whatsapp-float:hover {
+  background: #128c7e;
+  transform: scale(1.1);
+}
+
+.whatsapp-label {
+  position: absolute;
+  bottom: 70px;
+  right: 70px;
+  background: #25d366;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(15px);
+  transition: .3s;
+}
+
+.whatsapp-float:hover .whatsapp-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+.order-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.7);
+  z-index: 1000;
+}
+
+.order-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 15px;
+  max-width: 95%;
+  width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 50px rgba(0,0,0,.3);
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.selected-table {
+  background: #fff3cd;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  border: 2px solid #8B4513;
+}
+
+.table-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #8B4513;
+}
+
+.order-items {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #D2B48C;
+}
+
+.order-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.notes-section {
+  margin-bottom: 15px;
+}
+
+.notes-label {
+  display: block;
+  font-weight: 600;
+  color: #8B4513;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.notes-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 2px solid #D2B48C;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #8B4513;
+  box-shadow: 0 0 0 3px rgba(139,69,19,.1);
+}
+
+.notes-textarea::placeholder {
+  color: #999;
+}
+
+.order-total {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff3cd;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #8B4513;
+  text-align: center;
+}
+
+.order-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.order-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.order-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .table-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .order-modal {
+    width: 95%;
+    margin: 0;
+  }
+  
+  .notes-textarea {
+    min-height: 70px;
+    font-size: 16px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="title">GRAND LILY</h1>
+    <p class="subtitle">EST 1984 | NO PORK NO LARD</p>
+    <div class="divider"></div>
+    <img src="gambar/banner.png" width="1526" height="860" alt="Banner" loading="lazy">  
+    <h2 class="menu-title" style="color:#A0522D;margin-top:10px">NEW MENU - BAKSO GORENG</h2>
+    <img src="gambar/highlight.png" alt="Bakso Goreng" loading="lazy">
+  </header>
+
+  <section class="menu-section">
+    <div class="table-selection">
+      <h2 class="menu-title">Pilih Meja</h2>
+      <div class="table-grid" id="tableGrid"></div>
+    </div>
+    
+    <h2 class="menu-title">MAKANAN</h2>
+    <div class="menu-grid" id="makananGrid"></div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="menu-title">MINUMAN</h2>
+    <div class="menu-grid" id="minumanGrid"></div>
+  </section>
+
+  <div style="text-align:center;padding:15px">
+    <img src="gambar/signature.png" alt="Signature" style="max-width:1280px" loading="lazy">
+  </div>
+
+  <footer class="footer">
+    <img src="gambar/LOGO.png" alt="Logo" style="width:55px;height:55px;margin-bottom:12px" loading="lazy">
+    <p>Kota wisata, Ruko Travalgar, Cibubur No.37 Blok H<br>Telp: +62 811-1245-313 | Buka: 
+	senin sampai jumat jam 6 pagi sampai 5 sore / Rabu tutup / Sabtu Minggu jam 6 pagi sampai 2 siang </p>
+  </footer>
+
+  <div class="whatsapp-float" id="whatsappBtn">
+    📱
+    <span class="whatsapp-label">ORDER MEJA</span>
+  </div>
+
+  <div class="order-overlay" id="orderOverlay">
+    <div class="order-modal">
+      <div class="modal-header">
+        <span class="modal-title">📋 Konfirmasi Order</span>
+        <div class="modal-close" id="closeModal">×</div>
+      </div>
+      <div class="modal-body">
+        <div class="selected-table" id="selectedTableInfo">
+          <div class="table-number" id="selectedTableNum">-</div>
+          <p>Pilih meja & menu</p>
+        </div>
+        <div class="order-items" id="orderItemsList"></div>
+        
+        <!-- TAMBAHAN NOTES SECTION -->
+        <div class="notes-section">
+          <label class="notes-label" for="customerNotes">📝 Catatan Khusus (Opsional)</label>
+          <textarea 
+            id="customerNotes" 
+            class="notes-textarea" 
+            placeholder="Contoh: Pedas banget, kurang garam, tanpa bawang, dll..."
+            maxlength="500"
+          ></textarea>
+          <small style="color:#666;display:block;margin-top:4px">Maksimal 500 karakter</small>
+        </div>
+        
+        <div class="order-total" id="orderTotal" style="display:none">
+          Total: <span id="totalItems">0</span> item
+        </div>
+        <button class="order-btn" id="sendOrderBtn" disabled>Kirim Pesanan</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WA = '628111245313';
+    const m = {
+      makanan: [
+        {n:'MIE KRITING AYAM JAMUR',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
+        {n:'MIE BASO PANGSIT',i:'gambar/Miebasopangsit.webp'},
+        {n:'MIE KRITING TELOR',i:'gambar/MIE KRITING TELOR.Webp'},
+        {n:'MIE LEBAR',i:'gambar/mie lebar.webp'},
+        {n:'MIE PELANGI',i:'gambar/Mie pelangi.webp'},
+        {n:'MIE HIJAU',i:'gambar/Mi_Kriting_ijo_Ayam_Jamur.webp'},
+        {n:'MIE MERAH',i:'gambar/Mi_Kriting_merah_Ayam_Jamur.webp'},
+        {n:'KWETIAU AYAM JAMUR',i:'gambar/Kwetiaw_Ayam_Jamur.webp'},
+        {n:'BIHUN AYAM JAMUR',i:'gambar/Bihun_Ayam_Jamur.webp'},
+        {n:'NASI CAMPUR HAINAM',i:'gambar/NASI_HAINAM.webp'},
+        {n:'NASI TIM',i:'gambar/Nasi_Tim.webp'},
+        {n:'KARI AYAM',i:'gambar/Kari_Ayam.webp'},
+        {n:'YONG TAHU',i:'gambar/Yong_Tahu.webp'},
+        {n:'BASO PANGSIT',i:'gambar/baso_n_pangsit.webp'},
+        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp'},
+        {n:'PANGSIT GORENG',i:'gambar/pangsit_goreng.webp'},
+        {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp'},
+        {n:'BAKSO GORENG',i:'gambar/bakso goreng.webp'},
+      ],
+      minuman: [
+        {n:'ES JERUK',i:'gambar/es jeruk.webp'},
+        {n:'ES LEMON TEA',i:'gambar/es lemon tea.webp'},
+        {n:'LIANG TEH',i:'gambar/liang teh.webp'},
+        {n:'SUSU KACANG',i:'gambar/susu kacang.webp'},
+        {n:'KOPI',i:'gambar/Kopi.webp'},
+        {n:'ES TEH MANIS',i:'gambar/es teh manis.webp'},
+        {n:'TEH MANIS',i:'gambar/teh manis.webp'},
+        {n:'TEH BOTOL',i:'gambar/teh botol.webp'},
+        {n:'AQUA BOTOL',i:'gambar/aqua botol.webp'},
+        {n:'ES TEH TAWAR',i:'gambar/es teh tawar.webp'},
+        {n:'TEH TAWAR',i:'gambar/teh tawar.webp'},
+        {n:'AQUA GELAS',i:'gambar/aqua gelas.webp'}
+      ]
+    };
+
+    // Generate table buttons
+    document.getElementById('tableGrid').innerHTML = Array.from({length:10}, (_,i) => 
+      `<div class="table-btn" data-t="${i+1}">Meja ${i+1}</div>`
+    ).join('');
+
+    // Generate menu items
+    ['makananGrid','minumanGrid'].forEach((g,i) => {
+      document.getElementById(g).innerHTML = m[i?'minuman':'makanan'].map(d => `
+        <label class="menu-item">
+          <input type="checkbox" data-n="${d.n}" style="display:none">
+          <div class="menu-checkbox">✓</div>
+          <img src="${d.i}" class="menu-image" alt="${d.n}" loading="lazy" 
+            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2NjYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
+          <div class="dish-name">${d.n}</div>
+          <div class="quantity-controls">
+            <button type="button" class="qty-btn" data-action="minus" disabled>-</button>
+            <div class="qty-display">0</div>
+            <button type="button" class="qty-btn" data-action="plus" disabled>+</button>
+          </div>
+        </label>
+      `).join('');
+    });
+
+    let sT = 0; // selected table
+    let sI = {}; // selected items {name: {name, qty}}
+
+    // Update quantity function
+    function uQ(c, n) {
+      const qtyDisplay = c.parentElement.querySelector('.qty-display');
+      const q = parseInt(qtyDisplay.textContent) || 0;
+      const newQ = n < 0 ? Math.max(0, q + n) : Math.min(10, q + n);
+      
+      qtyDisplay.textContent = newQ;
+      
+      const minusBtn = c.parentElement.querySelector('[data-action="minus"]');
+      const plusBtn = c.parentElement.querySelector('[data-action="plus"]');
+      
+      minusBtn.disabled = newQ <= 1;
+      plusBtn.disabled = newQ >= 10;
+      
+      if (newQ === 0) {
+        c.checked = false;
+        delete sI[c.dataset.n];
+      } else {
+        sI[c.dataset.n] = {name: c.dataset.n, qty: newQ};
+      }
+      uO();
+    }
+
+    // Initialize quantity controls
+    document.querySelectorAll('.menu-item').forEach(item => {
+      const checkbox = item.querySelector('input[type="checkbox"]');
+      const minusBtn = item.querySelector('[data-action="minus"]');
+      const plusBtn = item.querySelector('[data-action="plus"]');
+      const qtyDisplay = item.querySelector('.qty-display');
+      
+      checkbox.addEventListener('change', e => {
+        if (e.target.checked) {
+          qtyDisplay.textContent = '1';
+          sI[e.target.dataset.n] = {name: e.target.dataset.n, qty: 1};
+          minusBtn.disabled = false;
+          plusBtn.disabled = false;
+        } else {
+          qtyDisplay.textContent = '0';
+          minusBtn.disabled = true;
+          plusBtn.disabled = true;
+          delete sI[e.target.dataset.n];
+        }
+        uO();
+      });
+      
+      minusBtn.addEventListener('click', () => uQ(checkbox, -1));
+      plusBtn.addEventListener('click', () => uQ(checkbox, 1));
+    });
+
+    // Update order display
+    function uO() {
+      const l = document.getElementById('orderItemsList');
+      const b = document.getElementById('sendOrderBtn');
+      const t = document.getElementById('orderTotal');
+      const th = document.getElementById('totalItems');
+      const h = !!sT;
+      
+      const items = Object.values(sI);
+      l.innerHTML = items.length ? 
+        items.map(item => 
+          `<div class="order-item">${item.name} <span style="float:right;font-weight:600;color:#8B4513">x${item.qty}</span></div>`
+        ).join('') : 
+        '<p style="text-align:center;color:#666">Pilih menu</p>';
+      
+      const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
+      th.textContent = totalItems;
+      t.style.display = totalItems ? 'block' : 'none';
+      
+      b.disabled = !(h && totalItems > 0);
+      if (sT) document.getElementById('selectedTableNum').textContent = sT;
+    }
+
+    // Table selection
+    document.getElementById('tableGrid').onclick = e => {
+      if (e.target.dataset.t) {
+        sT = +e.target.dataset.t;
+        document.querySelectorAll('.table-btn').forEach(t => t.classList.remove('active', 'selected'));
+        e.target.classList.add('active', 'selected');
+        uO();
+      }
+    };
+
+    // WhatsApp button
+    document.getElementById('whatsappBtn').onclick = () => {
+      if (!sT) {
+        alert('Pilih meja!');
+        return;
+      }
+      document.getElementById('orderOverlay').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      uO();
+      // Reset notes textarea
+      document.getElementById('customerNotes').value = '';
+    };
+
+    // Close modal
+    document.getElementById('closeModal').onclick = 
+    document.getElementById('orderOverlay').onclick = e => {
+      if (e.target.id === 'closeModal' || e.target === e.currentTarget) {
+        document.getElementById('orderOverlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    // Send order - MODIFIED TO INCLUDE NOTES
+    document.getElementById('sendOrderBtn').onclick = () => {
+      if (!sT || !Object.keys(sI).length) return;
+      
+      const items = Object.values(sI);
+      const totalItems = items.reduce((sum, item) => sum + item.qty, 0);
+      const notes = document.getElementById('customerNotes').value.trim();
+      
+      let message = `Halo Grand Lily! *Order Meja ${sT}* (${totalItems} item)%0A%0A`;
+      const orderList = items.map(item => `• ${encodeURIComponent(item.name)} x${item.qty}`).join('%0A');
+      
+      message += orderList;
+      
+      // Add notes if exists
+      if (notes) {
+        message += `%0A%0A📝 *CATATAN KHUSUS:*%0A${encodeURIComponent(notes)}`;
+      }
+      
+      message += `%0A%0ATerima kasih! 😊`;
+      
+      window.open(`https://wa.me/${WA}?text=${message}`, '_blank');
+      document.getElementById('orderOverlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      
+      // Reset order after sending
+      sI = {};
+      sT = 0;
+      document.querySelectorAll('.table-btn').forEach(t => t.classList.remove('active', 'selected'));
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        const item = cb.closest('.menu-item');
+        item.querySelector('.qty-display').textContent = '0';
+        item.querySelectorAll('.qty-btn').forEach(btn => btn.disabled = true);
+        item.querySelector('.menu-checkbox').style.opacity = '0';
+        item.querySelector('.quantity-controls').style.opacity = '0';
+      });
+    };
+
+    // ESC key to close modal
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && document.getElementById('orderOverlay').style.display === 'block') {
+        document.getElementById('orderOverlay').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Character counter for notes
+    document.getElementById('customerNotes').addEventListener('input', function() {
+      const remaining = 500 - this.value.length;
+      const small = this.parentElement.querySelector('small');
+      if (remaining < 50) {
+        small.textContent = `${remaining} karakter tersisa`;
+        small.style.color = remaining < 10 ? '#dc3545' : '#8B4513';
+      } else {
+        small.textContent = 'Maksimal 500 karakter';
+        small.style.color = '#666';
+      }
+    });
+  </script>
+</body>
 </html>
