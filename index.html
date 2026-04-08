@@ -115,6 +115,33 @@ body {
   box-shadow: 0 3px 10px rgba(37,211,102,.4);
 }
 
+.menu-category {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  margin-bottom: 20px;
+}
+
+.menu-category-title {
+  font-size: 1.3rem;
+  color: #8B4513;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.menu-category-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #8B4513, #A0522D);
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -502,18 +529,48 @@ img {
       <div class="table-grid" id="tableGrid"></div>
     </div>
     
-    <h2 class="menu-title">MAKANAN</h2>
-    <div class="menu-grid" id="makananGrid"></div>
-  </section>
+    <!-- MAKANAN - Dikelompokkan berdasarkan jenis -->
+    <div class="menu-category" id="mieKriting">
+      <h3 class="menu-category-title">🍜 MIE KRITING</h3>
+      <div class="menu-grid"></div>
+    </div>
+    
+    <div class="menu-category" id="mieLain">
+      <h3 class="menu-category-title">🍝 MIE FAMILY</h3>
+      <div class="menu-grid"></div>
+    </div>
+    
+    
+    <div class="menu-category" id="kwetiawBihun">
+      <h3 class="menu-category-title">🍲 KWETIAU & BIHUN</h3>
+      <div class="menu-grid"></div>
+    </div>
+    
+    <div class="menu-category" id="nasi">
+      <h3 class="menu-category-title">🍚 NASI</h3>
+      <div class="menu-grid"></div>
+    </div>
+  
+  <div class="menu-category" id="mieGoreng">
+      <h3 class="menu-category-title">🥟 GORENGAN</h3>
+      <div class="menu-grid"></div>
+    </div>
+  
+    <div class="menu-category" id="lainLain">
+      <h3 class="menu-category-title">🍛 LAIN-LAIN</h3>
+      <div class="menu-grid"></div>
+    </div>
 
-  <section class="menu-section">
-    <h2 class="menu-title">MINUMAN</h2>
-    <div class="menu-grid" id="minumanGrid"></div>
+    <!-- MINUMAN -->
+    <div class="menu-category" id="minuman">
+      <h3 class="menu-category-title">🥤 MINUMAN</h3>
+      <div class="menu-grid"></div>
+    </div>
   </section>
 
   <div style="text-align:center;padding:15px">
     <img src="gambar/signature.png" alt="Grand Lily Banner" width="1526" height="860">
-            <section data-empty-placeholder></section>
+    <section data-empty-placeholder></section>
   </div>
 
   <footer class="footer">
@@ -540,7 +597,6 @@ img {
         </div>
         <div class="order-items" id="orderItemsList"></div>
         
-        <!-- TAMBAHAN NOTES SECTION -->
         <div class="notes-section">
           <label class="notes-label" for="customerNotes">📝 Catatan Khusus (Opsional)</label>
           <textarea 
@@ -553,7 +609,7 @@ img {
         </div>
         
         <div class="order-total" id="orderTotal" style="display:none">
-          Total: <span id="totalItems">0</span> item
+		        Total: <span id="totalItems">0</span>
         </div>
         <button class="order-btn" id="sendOrderBtn" disabled>Kirim Pesanan</button>
       </div>
@@ -563,25 +619,69 @@ img {
   <script>
     const WA = '628111245313';
     const m = {
-      makanan: [
-        {n:'MIE KRITING AYAM JAMUR',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
-        {n:'MIE BASO PANGSIT',i:'gambar/Miebasopangsit.webp'},
-        {n:'MIE KRITING TELOR',i:'gambar/MIE KRITING TELOR.Webp'},
-        {n:'MIE LEBAR',i:'gambar/mie lebar.webp'},
-        {n:'MIE PELANGI',i:'gambar/Mie pelangi.webp'},
-        {n:'MIE HIJAU',i:'gambar/Mi_Kriting_ijo_Ayam_Jamur.webp'},
-        {n:'MIE MERAH',i:'gambar/Mi_Kriting_merah_Ayam_Jamur.webp'},
-        {n:'KWETIAU AYAM JAMUR',i:'gambar/Kwetiaw_Ayam_Jamur.webp'},
-        {n:'BIHUN AYAM JAMUR',i:'gambar/Bihun_Ayam_Jamur.webp'},
-        {n:'NASI CAMPUR HAINAM',i:'gambar/NASI_HAINAM.webp'},
-        {n:'NASI TIM',i:'gambar/Nasi_Tim.webp'},
-        {n:'KARI AYAM',i:'gambar/Kari_Ayam.webp'},
-        {n:'YONG TAHU',i:'gambar/Yong_Tahu.webp'},
-        {n:'BASO PANGSIT',i:'gambar/baso_n_pangsit.webp'},
-        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp'},
+      mieKriting: [
+        {n:'MIE KRITING AYAM JAMUR 1/2',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
+        {n:'MIE KRITING PANGSIT 1/2',i:'gambar/mie keriting Pangsit.webp'},
+        {n:'MIE KRITING BAKSO 1/2',i:'gambar/mie keriting baso.webp'},
+        {n:'MIE KERITING BASO PANGSIT 1/2',i:'gambar/mie keriting baso pangsit.webp'},
+		{n:'MIE KRITING AYAM JAMUR JUMBO',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
+        {n:'MIE KRITING PANGSIT JUMBO',i:'gambar/mie keriting Pangsit.webp'},
+        {n:'MIE KRITING BAKSO JUMBO',i:'gambar/mie keriting baso.webp'},
+        {n:'MIE KERITING BASO PANGSIT JUMBO',i:'gambar/mie keriting baso pangsit.webp'},
+      ],
+      mieLain: [
+        {n:'MIE HIJAU AYAM JAMUR',i:'gambar/mie hijau ayam jamur.webp'},
+        {n:'MIE HIJAU PANGSIT',i:'gambar/mie hijau pangsit.webp'},
+        {n:'MIE HIJAU BAKSO',i:'gambar/mie hijau baso.webp'},
+        {n:'MIE HIJAU BASO PANGSIT',i:'gambar/mie hijau baso pangsit.webp'},
+        {n:'MIE MERAH AYAM JAMUR',i:'gambar/mie merah ayam jamur.webp'},
+        {n:'MIE MERAH PANGSIT',i:'gambar/mie merah pangsit.webp'},
+        {n:'MIE MERAH BAKSO',i:'gambar/mie merah baso.webp'},
+        {n:'MIE MERAH BASO PANGSIT',i:'gambar/mie merah baso pangsit.webp'},
+        {n:'MIE PELANGI AYAM JAMUR',i:'gambar/mie pelangi ayam jamur.webp'},
+        {n:'MIE PELANGI PANGSIT',i:'gambar/mie pelangi pangsit.webp'},
+        {n:'MIE PELANGI BAKSO',i:'gambar/mie pelangi baso.webp'},
+        {n:'MIE PELANGI BASO PANGSIT',i:'gambar/mie pelangi baso pangsit.webp'},
+        {n:'MIE LEBAR AYAM JAMUR',i:'gambar/mie lebar ayam jamur.webp'},
+        {n:'MIE LEBAR PANGSIT',i:'gambar/mie lebar pangsit.webp'},
+        {n:'MIE LEBAR BAKSO',i:'gambar/mie lebar baso.webp'},
+        {n:'MIE LEBAR BASO PANGSIT',i:'gambar/mie lebar baso pangsit.webp'}
+      ],
+      mieGoreng: [
         {n:'PANGSIT GORENG',i:'gambar/pangsit_goreng.webp'},
-        {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp'},
         {n:'BAKSO GORENG',i:'gambar/bakso goreng.webp'},
+      ],
+      kwetiawBihun: [
+        {n:'BIHUN AYAM JAMUR 1/2',i:'gambar/bihun ayam jamur.webp'},
+		{n:'BIHUN AYAM JAMUR JUMBO',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
+        {n:'BIHUN PANGSIT 1/2',i:'gambar/bihun pangsit.webp'},
+		{n:'BIHUN PANGSIT JUMBO',i:'gambar/bihun pangsit.webp'},
+        {n:'BIHUN BAKSO 1/2',i:'gambar/bihun baso.webp'},
+		{n:'BIHUN BAKSO JUMBO',i:'gambar/bihun baso.webp'},
+        {n:'BIHUN BASO PANGSIT 1/2',i:'gambar/bihun baso pangsit.webp'},
+		{n:'BIHUN BASO PANGSIT JUMBO',i:'gambar/bihun baso pangsit.webp'},
+        {n:'KWETIAW AYAM JAMUR 1/2',i:'gambar/kwetiaw ayam jamur.webp'},
+		{n:'KWETIAW AYAM JAMUR JUMBO',i:'gambar/kwetiaw ayam jamur.webp'},
+        {n:'KWETIAW PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp'},
+		{n:'KWETIAW PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp'},
+        {n:'KWETIAW BAKSO 1/2',i:'gambar/kwetiaw baso.webp'},
+		{n:'KWETIAW BAKSO JUMBO',i:'gambar/kwetiaw baso.webp'},
+        {n:'KWETIAW BASO PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp'},
+		{n:'KWETIAW BASO PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp'}
+		
+      ],
+      nasi: [
+        {n:'NASI CAMPUR / HAINAM',i:'gambar/NASI_HAINAM.webp'},
+        {n:'NASI TIM',i:'gambar/Nasi_Tim.webp'},
+		{n:'NASI PUTIH',i:'gambar/Nasi putih.webp'},
+      ],
+      lainLain: [
+        {n:'KARI AYAM(Nasi/Bihun)',i:'gambar/Kari_Ayam.webp'},
+        {n:'YONG TAHU(Nasi/Bihun)',i:'gambar/Yong_Tahu.webp'},
+        {n:'BASO PANGSIT ISI 10',i:'gambar/baso_n_pangsit.webp'},
+		{n:'BASO PANGSIT ISI 5 ',i:'gambar/baso_n_pangsit.webp'},
+        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp'},
+        {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp'},
       ],
       minuman: [
         {n:'ES JERUK',i:'gambar/es jeruk.webp'},
@@ -604,22 +704,25 @@ img {
       `<div class="table-btn" data-t="${i+1}">Meja ${i+1}</div>`
     ).join('');
 
-    // Generate menu items
-    ['makananGrid','minumanGrid'].forEach((g,i) => {
-      document.getElementById(g).innerHTML = m[i?'minuman':'makanan'].map(d => `
-        <label class="menu-item">
-          <input type="checkbox" data-n="${d.n}" style="display:none">
-          <div class="menu-checkbox">✓</div>
-          <img src="${d.i}" class="menu-image" alt="${d.n}" loading="lazy" 
-            onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2NjYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
-          <div class="dish-name">${d.n}</div>
-          <div class="quantity-controls">
-            <button type="button" class="qty-btn" data-action="minus" disabled>-</button>
-            <div class="qty-display">0</div>
-            <button type="button" class="qty-btn" data-action="plus" disabled>+</button>
-          </div>
-        </label>
-      `).join('');
+    // Generate menu items for all categories
+    Object.entries(m).forEach(([categoryId, items]) => {
+      const categoryContainer = document.querySelector(`#${categoryId} .menu-grid`);
+      if (categoryContainer) {
+        categoryContainer.innerHTML = items.map(d => `
+          <label class="menu-item">
+            <input type="checkbox" data-n="${d.n}" style="display:none">
+            <div class="menu-checkbox">✓</div>
+            <img src="${d.i}" class="menu-image" alt="${d.n}" loading="lazy" 
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2NjYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
+            <div class="dish-name">${d.n}</div>
+            <div class="quantity-controls">
+              <button type="button" class="qty-btn" data-action="minus" disabled>-</button>
+              <div class="qty-display">0</div>
+              <button type="button" class="qty-btn" data-action="plus" disabled>+</button>
+            </div>
+          </label>
+        `).join('');
+      }
     });
 
     let sT = 0; // selected table
@@ -648,30 +751,32 @@ img {
       uO();
     }
 
-    // Initialize quantity controls
-    document.querySelectorAll('.menu-item').forEach(item => {
-      const checkbox = item.querySelector('input[type="checkbox"]');
-      const minusBtn = item.querySelector('[data-action="minus"]');
-      const plusBtn = item.querySelector('[data-action="plus"]');
-      const qtyDisplay = item.querySelector('.qty-display');
-      
-      checkbox.addEventListener('change', e => {
-        if (e.target.checked) {
-          qtyDisplay.textContent = '1';
-          sI[e.target.dataset.n] = {name: e.target.dataset.n, qty: 1};
-          minusBtn.disabled = false;
-          plusBtn.disabled = false;
-        } else {
-          qtyDisplay.textContent = '0';
-          minusBtn.disabled = true;
-          plusBtn.disabled = true;
-          delete sI[e.target.dataset.n];
-        }
-        uO();
+    // Initialize quantity controls for all menu items
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.menu-item').forEach(item => {
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const minusBtn = item.querySelector('[data-action="minus"]');
+        const plusBtn = item.querySelector('[data-action="plus"]');
+        const qtyDisplay = item.querySelector('.qty-display');
+        
+        checkbox.addEventListener('change', e => {
+          if (e.target.checked) {
+            qtyDisplay.textContent = '1';
+            sI[e.target.dataset.n] = {name: e.target.dataset.n, qty: 1};
+            minusBtn.disabled = false;
+            plusBtn.disabled = false;
+          } else {
+            qtyDisplay.textContent = '0';
+            minusBtn.disabled = true;
+            plusBtn.disabled = true;
+            delete sI[e.target.dataset.n];
+          }
+          uO();
+        });
+        
+        minusBtn.addEventListener('click', () => uQ(checkbox, -1));
+        plusBtn.addEventListener('click', () => uQ(checkbox, 1));
       });
-      
-      minusBtn.addEventListener('click', () => uQ(checkbox, -1));
-      plusBtn.addEventListener('click', () => uQ(checkbox, 1));
     });
 
     // Update order display
@@ -698,17 +803,17 @@ img {
     }
 
     // Table selection
-    document.getElementById('tableGrid').onclick = e => {
+    document.getElementById('tableGrid').addEventListener('click', e => {
       if (e.target.dataset.t) {
         sT = +e.target.dataset.t;
         document.querySelectorAll('.table-btn').forEach(t => t.classList.remove('active', 'selected'));
         e.target.classList.add('active', 'selected');
         uO();
       }
-    };
+    });
 
     // WhatsApp button
-    document.getElementById('whatsappBtn').onclick = () => {
+    document.getElementById('whatsappBtn').addEventListener('click', () => {
       if (!sT) {
         alert('Pilih meja!');
         return;
@@ -718,19 +823,23 @@ img {
       uO();
       // Reset notes textarea
       document.getElementById('customerNotes').value = '';
-    };
+    });
 
     // Close modal
-    document.getElementById('closeModal').onclick = 
-    document.getElementById('orderOverlay').onclick = e => {
-      if (e.target.id === 'closeModal' || e.target === e.currentTarget) {
+    document.getElementById('closeModal').addEventListener('click', e => {
+      document.getElementById('orderOverlay').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+    
+    document.getElementById('orderOverlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) {
         document.getElementById('orderOverlay').style.display = 'none';
         document.body.style.overflow = 'auto';
       }
-    };
+    });
 
-    // Send order - MODIFIED TO INCLUDE NOTES
-    document.getElementById('sendOrderBtn').onclick = () => {
+    // Send order
+    document.getElementById('sendOrderBtn').addEventListener('click', () => {
       if (!sT || !Object.keys(sI).length) return;
       
       const items = Object.values(sI);
@@ -765,7 +874,7 @@ img {
         item.querySelector('.menu-checkbox').style.opacity = '0';
         item.querySelector('.quantity-controls').style.opacity = '0';
       });
-    };
+    });
 
     // ESC key to close modal
     document.addEventListener('keydown', e => {
