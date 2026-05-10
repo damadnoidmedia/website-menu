@@ -164,6 +164,48 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,.15);
 }
 
+/* SOLD OUT STYLES */
+.menu-item.sold-out {
+  opacity: 0.5;
+  position: relative;
+  cursor: not-allowed;
+  background: #f8f9fa;
+}
+
+.menu-item.sold-out::before {
+  content: 'SOLD OUT';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #dc3545;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-item.sold-out .menu-checkbox,
+.menu-item.sold-out .quantity-controls {
+  display: none !important;
+}
+
+.menu-item.sold-out input[type="checkbox"] {
+  display: none !important;
+}
+
+.menu-item.sold-out .dish-name {
+  color: #999;
+}
+
+.menu-item.sold-out:hover {
+  transform: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
 .menu-checkbox {
   position: absolute;
   top: 12px;
@@ -540,7 +582,6 @@ img {
       <div class="menu-grid"></div>
     </div>
     
-    
     <div class="menu-category" id="kwetiawBihun">
       <h3 class="menu-category-title">🍲 KWETIAU & BIHUN</h3>
       <div class="menu-grid"></div>
@@ -551,7 +592,7 @@ img {
       <div class="menu-grid"></div>
     </div>
   
-  <div class="menu-category" id="mieGoreng">
+    <div class="menu-category" id="mieGoreng">
       <h3 class="menu-category-title">🥟 GORENGAN</h3>
       <div class="menu-grid"></div>
     </div>
@@ -620,101 +661,100 @@ img {
     const WA = '628111245313';
     const m = {
       mieKriting: [
-        {n:'MIE KRITING AYAM JAMUR',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
-		{n:'MIE KRITING AYAM JAMUR 1/2',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
-		{n:'MIE KRITING AYAM JAMUR JUMBO',i:'gambar/Mi_Kriting_Ayam_Jamur.webp'},
-        {n:'MIE KRITING PANGSIT',i:'gambar/mie keriting Pangsit.webp'},
-		{n:'MIE KRITING PANGSIT 1/2',i:'gambar/mie keriting Pangsit.webp'},
-		{n:'MIE KRITING PANGSIT JUMBO',i:'gambar/mie keriting Pangsit.webp'},
-        {n:'MIE KRITING BAKSO',i:'gambar/mie keriting baso.webp'},
-		{n:'MIE KRITING BAKSO 1/2',i:'gambar/mie keriting baso.webp'},
-		{n:'MIE KRITING BAKSO JUMBO',i:'gambar/mie keriting baso.webp'},
-        {n:'MIE KERITING BASO PANGSIT',i:'gambar/mie keriting baso pangsit.webp'},
-		{n:'MIE KERITING BASO PANGSIT 1/2',i:'gambar/mie keriting baso pangsit.webp'},
-        {n:'MIE KERITING BASO PANGSIT JUMBO',i:'gambar/mie keriting baso pangsit.webp'},
+        {n:'MIE KRITING AYAM JAMUR',i:'gambar/Mi_Kriting_Ayam_Jamur.webp', soldOut: false},
+		{n:'MIE KRITING AYAM JAMUR 1/2',i:'gambar/Mi_Kriting_Ayam_Jamur.webp', soldOut: false},
+		{n:'MIE KRITING AYAM JAMUR JUMBO',i:'gambar/Mi_Kriting_Ayam_Jamur.webp', soldOut: false},
+        {n:'MIE KRITING PANGSIT',i:'gambar/mie keriting Pangsit.webp', soldOut: false},
+		{n:'MIE KRITING PANGSIT 1/2',i:'gambar/mie keriting Pangsit.webp', soldOut: false},
+		{n:'MIE KRITING PANGSIT JUMBO',i:'gambar/mie keriting Pangsit.webp', soldOut: false},
+        {n:'MIE KRITING BAKSO',i:'gambar/mie keriting baso.webp', soldOut: false},
+		{n:'MIE KRITING BAKSO 1/2',i:'gambar/mie keriting baso.webp', soldOut: false},
+		{n:'MIE KRITING BAKSO JUMBO',i:'gambar/mie keriting baso.webp', soldOut: false},
+        {n:'MIE KERITING BASO PANGSIT',i:'gambar/mie keriting baso pangsit.webp', soldOut: false},
+		{n:'MIE KERITING BASO PANGSIT 1/2',i:'gambar/mie keriting baso pangsit.webp', soldOut: false},
+        {n:'MIE KERITING BASO PANGSIT JUMBO',i:'gambar/mie keriting baso pangsit.webp', soldOut: false},
       ],
       mieLain: [
-        {n:'MIE HIJAU AYAM JAMUR',i:'gambar/mie hijau ayam jamur.webp'},
-        {n:'MIE HIJAU PANGSIT',i:'gambar/mie hijau pangsit.webp'},
-        {n:'MIE HIJAU BAKSO',i:'gambar/mie hijau baso.webp'},
-        {n:'MIE HIJAU BASO PANGSIT',i:'gambar/mie hijau baso pangsit.webp'},
-        {n:'MIE MERAH AYAM JAMUR',i:'gambar/mie merah ayam jamur.webp'},
-        {n:'MIE MERAH PANGSIT',i:'gambar/mie merah pangsit.webp'},
-        {n:'MIE MERAH BAKSO',i:'gambar/mie merah baso.webp'},
-        {n:'MIE MERAH BASO PANGSIT',i:'gambar/mie merah baso pangsit.webp'},
-        {n:'MIE PELANGI AYAM JAMUR',i:'gambar/mie pelangi ayam jamur.webp'},
-		{n:'MIE PELANGI AYAM JAMUR JUMBO',i:'gambar/mie pelangi ayam jamur.webp'},
-        {n:'MIE PELANGI PANGSIT',i:'gambar/mie pelangi pangsit.webp'},
-		{n:'MIE PELANGI PANGSIT JUMBO',i:'gambar/mie pelangi pangsit.webp'},
-        {n:'MIE PELANGI BAKSO',i:'gambar/mie pelangi baso.webp'},
-		{n:'MIE PELANGI BAKSO JUMBO',i:'gambar/mie pelangi baso.webp'},
-        {n:'MIE PELANGI BASO PANGSIT',i:'gambar/mie pelangi baso pangsit.webp'},
-		{n:'MIE PELANGI BASO PANGSIT JUMBO',i:'gambar/mie pelangi baso pangsit.webp'},
-        {n:'MIE LEBAR AYAM JAMUR',i:'gambar/mie lebar ayam jamur.webp'},
-        {n:'MIE LEBAR PANGSIT',i:'gambar/mie lebar pangsit.webp'},
-        {n:'MIE LEBAR BAKSO',i:'gambar/mie lebar baso.webp'},
-        {n:'MIE LEBAR BASO PANGSIT',i:'gambar/mie lebar baso pangsit.webp'}
+        {n:'MIE HIJAU AYAM JAMUR',i:'gambar/mie hijau ayam jamur.webp', soldOut: true},
+        {n:'MIE HIJAU PANGSIT',i:'gambar/mie hijau pangsit.webp', soldOut: true},
+        {n:'MIE HIJAU BAKSO',i:'gambar/mie hijau baso.webp', soldOut: true},
+        {n:'MIE HIJAU BASO PANGSIT',i:'gambar/mie hijau baso pangsit.webp', soldOut: true},
+        {n:'MIE MERAH AYAM JAMUR',i:'gambar/mie merah ayam jamur.webp', soldOut: false},
+        {n:'MIE MERAH PANGSIT',i:'gambar/mie merah pangsit.webp', soldOut: false},
+        {n:'MIE MERAH BAKSO',i:'gambar/mie merah baso.webp', soldOut: false},
+        {n:'MIE MERAH BASO PANGSIT',i:'gambar/mie merah baso pangsit.webp', soldOut: false},
+        {n:'MIE PELANGI AYAM JAMUR',i:'gambar/mie pelangi ayam jamur.webp', soldOut: false},
+		{n:'MIE PELANGI AYAM JAMUR JUMBO',i:'gambar/mie pelangi ayam jamur.webp', soldOut: false},
+        {n:'MIE PELANGI PANGSIT',i:'gambar/mie pelangi pangsit.webp', soldOut: false},
+		{n:'MIE PELANGI PANGSIT JUMBO',i:'gambar/mie pelangi pangsit.webp', soldOut: false},
+        {n:'MIE PELANGI BAKSO',i:'gambar/mie pelangi baso.webp', soldOut: false},
+		{n:'MIE PELANGI BAKSO JUMBO',i:'gambar/mie pelangi baso.webp', soldOut: false},
+        {n:'MIE PELANGI BASO PANGSIT',i:'gambar/mie pelangi baso pangsit.webp', soldOut: false},
+		{n:'MIE PELANGI BASO PANGSIT JUMBO',i:'gambar/mie pelangi baso pangsit.webp', soldOut: false},
+        {n:'MIE LEBAR AYAM JAMUR',i:'gambar/mie lebar ayam jamur.webp', soldOut: false},
+        {n:'MIE LEBAR PANGSIT',i:'gambar/mie lebar pangsit.webp', soldOut: false},
+        {n:'MIE LEBAR BAKSO',i:'gambar/mie lebar baso.webp', soldOut: false},
+        {n:'MIE LEBAR BASO PANGSIT',i:'gambar/mie lebar baso pangsit.webp', soldOut: false}
       ],
       mieGoreng: [
-        {n:'PANGSIT GORENG',i:'gambar/pangsit_goreng.webp'},
-        {n:'BAKSO GORENG (ISI 2)',i:'gambar/bakso goreng.webp'},
+        {n:'PANGSIT GORENG',i:'gambar/pangsit_goreng.webp', soldOut: false},
+        {n:'BAKSO GORENG (ISI 2)',i:'gambar/bakso goreng.webp', soldOut: true},
       ],
       kwetiawBihun: [
-        {n:'BIHUN AYAM JAMUR',i:'gambar/bihun ayam jamur.webp'},
-		{n:'BIHUN AYAM JAMUR 1/2',i:'gambar/bihun ayam jamur.webp'},
-		{n:'BIHUN AYAM JAMUR JUMBO',i:'gambar/bihun ayam jamur.webp'},
-        {n:'BIHUN PANGSIT',i:'gambar/bihun pangsit.webp'},
-		{n:'BIHUN PANGSIT 1/2',i:'gambar/bihun pangsit.webp'},
-		{n:'BIHUN PANGSIT JUMBO',i:'gambar/bihun pangsit.webp'},
-        {n:'BIHUN BAKSO',i:'gambar/bihun baso.webp'},
-		{n:'BIHUN BAKSO 1/2',i:'gambar/bihun baso.webp'},
-		{n:'BIHUN BAKSO JUMBO',i:'gambar/bihun baso.webp'},
-		{n:'BIHUN BASO PANGSIT',i:'gambar/bihun baso pangsit.webp'},
-        {n:'BIHUN BASO PANGSIT 1/2',i:'gambar/bihun baso pangsit.webp'},
-		{n:'BIHUN BASO PANGSIT JUMBO',i:'gambar/bihun baso pangsit.webp'},
-		{n:'KWETIAW AYAM JAMUR',i:'gambar/kwetiaw ayam jamur.webp'},
-        {n:'KWETIAW AYAM JAMUR 1/2',i:'gambar/kwetiaw ayam jamur.webp'},
-		{n:'KWETIAW AYAM JAMUR JUMBO',i:'gambar/kwetiaw ayam jamur.webp'},
-		{n:'KWETIAW PANGSIT',i:'gambar/kwetiaw baso pangsit.webp'},
-        {n:'KWETIAW PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp'},
-		{n:'KWETIAW PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp'},
-		{n:'KWETIAW BAKSO',i:'gambar/kwetiaw baso.webp'},
-        {n:'KWETIAW BAKSO 1/2',i:'gambar/kwetiaw baso.webp'},
-		{n:'KWETIAW BAKSO JUMBO',i:'gambar/kwetiaw baso.webp'},
-		{n:'KWETIAW BASO PANGSIT',i:'gambar/kwetiaw baso pangsit.webp'},
-        {n:'KWETIAW BASO PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp'},
-		{n:'KWETIAW BASO PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp'}
-		
+        {n:'BIHUN AYAM JAMUR',i:'gambar/bihun ayam jamur.webp', soldOut: false},
+		{n:'BIHUN AYAM JAMUR 1/2',i:'gambar/bihun ayam jamur.webp', soldOut: false},
+		{n:'BIHUN AYAM JAMUR JUMBO',i:'gambar/bihun ayam jamur.webp', soldOut: false},
+        {n:'BIHUN PANGSIT',i:'gambar/bihun pangsit.webp', soldOut: false},
+		{n:'BIHUN PANGSIT 1/2',i:'gambar/bihun pangsit.webp', soldOut: false},
+		{n:'BIHUN PANGSIT JUMBO',i:'gambar/bihun pangsit.webp', soldOut: false},
+        {n:'BIHUN BAKSO',i:'gambar/bihun baso.webp', soldOut: false},
+		{n:'BIHUN BAKSO 1/2',i:'gambar/bihun baso.webp', soldOut: false},
+		{n:'BIHUN BAKSO JUMBO',i:'gambar/bihun baso.webp', soldOut: false},
+		{n:'BIHUN BASO PANGSIT',i:'gambar/bihun baso pangsit.webp', soldOut: false},
+        {n:'BIHUN BASO PANGSIT 1/2',i:'gambar/bihun baso pangsit.webp', soldOut: false},
+		{n:'BIHUN BASO PANGSIT JUMBO',i:'gambar/bihun baso pangsit.webp', soldOut: false},
+		{n:'KWETIAW AYAM JAMUR',i:'gambar/kwetiaw ayam jamur.webp', soldOut: false},
+        {n:'KWETIAW AYAM JAMUR 1/2',i:'gambar/kwetiaw ayam jamur.webp', soldOut: false},
+		{n:'KWETIAW AYAM JAMUR JUMBO',i:'gambar/kwetiaw ayam jamur.webp', soldOut: false},
+		{n:'KWETIAW PANGSIT',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false},
+        {n:'KWETIAW PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false},
+		{n:'KWETIAW PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false},
+		{n:'KWETIAW BAKSO',i:'gambar/kwetiaw baso.webp', soldOut: false},
+        {n:'KWETIAW BAKSO 1/2',i:'gambar/kwetiaw baso.webp', soldOut: false},
+		{n:'KWETIAW BAKSO JUMBO',i:'gambar/kwetiaw baso.webp', soldOut: false},
+		{n:'KWETIAW BASO PANGSIT',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false},
+        {n:'KWETIAW BASO PANGSIT 1/2',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false},
+		{n:'KWETIAW BASO PANGSIT JUMBO',i:'gambar/kwetiaw baso pangsit.webp', soldOut: false}
       ],
       nasi: [
-        {n:'NASI CAMPUR / HAINAM',i:'gambar/NASI_HAINAM.webp'},
-        {n:'NASI TIM',i:'gambar/Nasi_Tim.webp'},
-		{n:'NASI PUTIH',i:'gambar/Nasi putih.webp'},
+        {n:'NASI CAMPUR / HAINAM',i:'gambar/NASI_HAINAM.webp', soldOut: false},
+        {n:'NASI TIM',i:'gambar/Nasi_Tim.webp', soldOut: false},
+		{n:'NASI PUTIH',i:'gambar/Nasi putih.webp', soldOut: false},
       ],
       lainLain: [
-        {n:'KARI AYAM(Nasi/Bihun)',i:'gambar/Kari_Ayam.webp'},
-        {n:'YONG TAHU(Nasi/Bihun)',i:'gambar/Yong_Tahu.webp'},
-        {n:'BASO PANGSIT ISI 10',i:'gambar/baso_n_pangsit.webp'},
-		{n:'BASO PANGSIT ISI 5 ',i:'gambar/baso_n_pangsit.webp'},
-		{n:'PANGSIT ISI 10',i:'gambar/baso_n_pangsit.webp'},
-		{n:'PANGSIT ISI 5',i:'gambar/baso_n_pangsit.webp'},
-		{n:'BASO ISI 10',i:'gambar/baso_n_pangsit.webp'},
-		{n:'BASO ISI 5',i:'gambar/baso_n_pangsit.webp'},
-        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp'},
-        {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp'},
+        {n:'KARI AYAM(Nasi/Bihun)',i:'gambar/Kari_Ayam.webp', soldOut: false},
+        {n:'YONG TAHU(Nasi/Bihun)',i:'gambar/Yong_Tahu.webp', soldOut: false},
+        {n:'BASO PANGSIT ISI 10',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+		{n:'BASO PANGSIT ISI 5 ',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+		{n:'PANGSIT ISI 10',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+		{n:'PANGSIT ISI 5',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+		{n:'BASO ISI 10',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+		{n:'BASO ISI 5',i:'gambar/baso_n_pangsit.webp', soldOut: false},
+        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp', soldOut: false},
+        {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp', soldOut: false},
       ],
       minuman: [
-        {n:'ES JERUK',i:'gambar/es jeruk.webp'},
-        {n:'ES LEMON TEA',i:'gambar/es lemon tea.webp'},
-        {n:'LIANG TEH',i:'gambar/liang teh sold out.webp'},
-        {n:'SUSU KACANG',i:'gambar/susu kacang.webp'},
-        {n:'KOPI',i:'gambar/Kopi.webp'},
-        {n:'ES TEH MANIS',i:'gambar/es teh manis.webp'},
-        {n:'TEH MANIS',i:'gambar/teh manis.webp'},
-        {n:'TEH BOTOL',i:'gambar/teh botol.webp'},
-        {n:'AQUA BOTOL',i:'gambar/aqua botol.webp'},
-        {n:'ES TEH TAWAR',i:'gambar/es teh tawar.webp'},
-        {n:'TEH TAWAR',i:'gambar/teh tawar.webp'}
+        {n:'ES JERUK',i:'gambar/es jeruk.webp', soldOut: false},
+        {n:'ES LEMON TEA',i:'gambar/es lemon tea.webp', soldOut: false},
+        {n:'LIANG TEH',i:'gambar/liang teh.webp', soldOut: true},
+        {n:'SUSU KACANG',i:'gambar/susu kacang.webp', soldOut: false},
+        {n:'KOPI',i:'gambar/Kopi.webp', soldOut: false},
+        {n:'ES TEH MANIS',i:'gambar/es teh manis.webp', soldOut: false},
+        {n:'TEH MANIS',i:'gambar/teh manis.webp', soldOut: false},
+        {n:'TEH BOTOL',i:'gambar/teh botol.webp', soldOut: false},
+        {n:'AQUA BOTOL',i:'gambar/aqua botol.webp', soldOut: false},
+        {n:'ES TEH TAWAR',i:'gambar/es teh tawar.webp', soldOut: false},
+        {n:'TEH TAWAR',i:'gambar/teh tawar.webp', soldOut: false}
       ]
     };
 
@@ -723,24 +763,29 @@ img {
       `<div class="table-btn" data-t="${i+1}">Meja ${i+1}</div>`
     ).join('');
 
-    // Generate menu items for all categories
+    // Generate menu items for all categories WITH SOLD OUT SUPPORT
     Object.entries(m).forEach(([categoryId, items]) => {
       const categoryContainer = document.querySelector(`#${categoryId} .menu-grid`);
       if (categoryContainer) {
-        categoryContainer.innerHTML = items.map(d => `
-          <label class="menu-item">
-            <input type="checkbox" data-n="${d.n}" style="display:none">
-            <div class="menu-checkbox">✓</div>
-            <img src="${d.i}" class="menu-image" alt="${d.n}" loading="lazy" 
-              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2NjYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
-            <div class="dish-name">${d.n}</div>
-            <div class="quantity-controls">
-              <button type="button" class="qty-btn" data-action="minus" disabled>-</button>
-              <div class="qty-display">0</div>
-              <button type="button" class="qty-btn" data-action="plus" disabled>+</button>
-            </div>
-          </label>
-        `).join('');
+        categoryContainer.innerHTML = items.map(d => {
+          const isSoldOut = d.soldOut || false;
+          return `
+            <label class="menu-item ${isSoldOut ? 'sold-out' : ''}">
+              ${isSoldOut ? '' : `<input type="checkbox" data-n="${d.n}" style="display:none">`}
+              ${isSoldOut ? '' : `<div class="menu-checkbox">✓</div>`}
+              <img src="${d.i}" class="menu-image" alt="${d.n}" loading="lazy" 
+                onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2NjYyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
+              <div class="dish-name">${d.n}</div>
+              ${isSoldOut ? '' : `
+                <div class="quantity-controls">
+                  <button type="button" class="qty-btn" data-action="minus" disabled>-</button>
+                  <div class="qty-display">0</div>
+                  <button type="button" class="qty-btn" data-action="plus" disabled>+</button>
+                </div>
+              `}
+            </label>
+          `;
+        }).join('');
       }
     });
 
@@ -772,29 +817,33 @@ img {
 
     // Initialize quantity controls for all menu items
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.menu-item').forEach(item => {
+      document.querySelectorAll('.menu-item:not(.sold-out)').forEach(item => {
         const checkbox = item.querySelector('input[type="checkbox"]');
         const minusBtn = item.querySelector('[data-action="minus"]');
         const plusBtn = item.querySelector('[data-action="plus"]');
         const qtyDisplay = item.querySelector('.qty-display');
         
-        checkbox.addEventListener('change', e => {
-          if (e.target.checked) {
-            qtyDisplay.textContent = '1';
-            sI[e.target.dataset.n] = {name: e.target.dataset.n, qty: 1};
-            minusBtn.disabled = false;
-            plusBtn.disabled = false;
-          } else {
-            qtyDisplay.textContent = '0';
-            minusBtn.disabled = true;
-            plusBtn.disabled = true;
-            delete sI[e.target.dataset.n];
-          }
-          uO();
-        });
+        if (checkbox) {
+          checkbox.addEventListener('change', e => {
+            if (e.target.checked) {
+              qtyDisplay.textContent = '1';
+              sI[e.target.dataset.n] = {name: e.target.dataset.n, qty: 1};
+              minusBtn.disabled = false;
+              plusBtn.disabled = false;
+            } else {
+              qtyDisplay.textContent = '0';
+              minusBtn.disabled = true;
+              plusBtn.disabled = true;
+              delete sI[e.target.dataset.n];
+            }
+            uO();
+          });
+        }
         
-        minusBtn.addEventListener('click', () => uQ(checkbox, -1));
-        plusBtn.addEventListener('click', () => uQ(checkbox, 1));
+        if (minusBtn && plusBtn) {
+          minusBtn.addEventListener('click', () => uQ(checkbox, -1));
+          plusBtn.addEventListener('click', () => uQ(checkbox, 1));
+        }
       });
     });
 
