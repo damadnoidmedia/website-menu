@@ -529,6 +529,106 @@ body {
   cursor: not-allowed;
 }
 
+/* HOW TO ORDER POPUP */
+.howto-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.75);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.howto-modal {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 92%;
+  width: 420px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.howto-header {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: #fff;
+  padding: 22px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.howto-header h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.howto-body {
+  padding: 25px 22px;
+}
+
+.step {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.step:last-child {
+  margin-bottom: 0;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  background: #8B4513;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.step-content h4 {
+  color: #8B4513;
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.step-content p {
+  color: #555;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.howto-footer {
+  padding: 15px 22px 25px;
+  text-align: center;
+}
+
+.howto-btn {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: #fff;
+  border: none;
+  padding: 14px 45px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.howto-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139,69,19,.3);
+}
+
 @media (max-width: 768px) {
   .table-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -556,6 +656,48 @@ img {
 </style>
 </head>
 <body>
+  <!-- HOW TO ORDER POPUP -->
+  <div class="howto-overlay" id="howtoOverlay">
+    <div class="howto-modal">
+      <div class="howto-header">
+        <h2>📖 Cara Memesan</h2>
+      </div>
+      <div class="howto-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Pilih Meja</h4>
+            <p>Klik salah satu tombol meja (Meja 1 - Meja 10) yang tersedia.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Pilih Menu</h4>
+            <p>Centang menu yang ingin dipesan. Menu yang sudah habis akan bertuliskan SOLD OUT.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Atur Jumlah</h4>
+            <p>Setelah dicentang, atur jumlah porsi menggunakan tombol + dan -.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Kirim Pesanan</h4>
+            <p>Klik tombol 🍜 di pojok kanan bawah, isi catatan jika perlu, lalu kirim via WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+      <div class="howto-footer">
+        <button class="howto-btn" id="closeHowto">Mulai Pesan</button>
+      </div>
+    </div>
+  </div>
+
   <header class="header">
     <h1 class="title">GRAND LILY</h1>
     <p class="subtitle">EST 1984 | NO PORK NO LARD</p>
@@ -621,7 +763,7 @@ img {
   </footer>
 
   <div class="whatsapp-float" id="whatsappBtn">
-    📱
+    🍜
     <span class="whatsapp-label">ORDER MEJA</span>
   </div>
 
@@ -658,6 +800,29 @@ img {
   </div>
 
   <script>
+    // Show How to Order popup on page load
+    function showHowtoPopup() {
+      const overlay = document.getElementById('howtoOverlay');
+      overlay.style.display = 'flex';
+    }
+
+    // Close how to order popup
+    function closeHowtoPopup() {
+      document.getElementById('howtoOverlay').style.display = 'none';
+    }
+
+    // Auto show popup when page loads
+    window.onload = function() {
+      setTimeout(() => {
+        showHowtoPopup();
+      }, 800);
+    };
+
+    document.getElementById('closeHowto').addEventListener('click', closeHowtoPopup);
+    document.getElementById('howtoOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeHowtoPopup();
+    });
+
     const WA = '628111245313';
     const m = {
       mieKriting: [
@@ -951,18 +1116,8 @@ img {
         document.getElementById('orderOverlay').style.display = 'none';
         document.body.style.overflow = 'auto';
       }
-    });
-
-    // Character counter for notes
-    document.getElementById('customerNotes').addEventListener('input', function() {
-      const remaining = 500 - this.value.length;
-      const small = this.parentElement.querySelector('small');
-      if (remaining < 50) {
-        small.textContent = `${remaining} karakter tersisa`;
-        small.style.color = remaining < 10 ? '#dc3545' : '#8B4513';
-      } else {
-        small.textContent = 'Maksimal 500 karakter';
-        small.style.color = '#666';
+      if (e.key === 'Escape' && document.getElementById('howtoOverlay').style.display === 'flex') {
+        document.getElementById('howtoOverlay').style.display = 'none';
       }
     });
   </script>
