@@ -18,6 +18,10 @@ body {
   color: #333;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header {
   text-align: center;
   padding: 20px;
@@ -54,6 +58,57 @@ body {
   font-size: 1.5rem;
   color: #8B4513;
   margin: 20px 0;
+}
+
+.category-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(253, 246, 227, .96);
+  backdrop-filter: blur(10px);
+  padding: 12px 10px;
+  margin: 0 auto 20px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+.category-nav-title {
+  text-align: center;
+  color: #8B4513;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.category-nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.category-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 2px solid #D2B48C;
+  border-radius: 999px;
+  background: #fff;
+  color: #8B4513;
+  font-weight: 700;
+  font-size: .9rem;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,.06);
+  transition: .25s;
+}
+
+.category-link:hover,
+.category-link.active {
+  background: linear-gradient(135deg, #8B4513, #A0522D);
+  color: #fff;
+  border-color: #8B4513;
+  transform: translateY(-1px);
 }
 
 .table-selection {
@@ -121,6 +176,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,.08);
   margin-bottom: 20px;
+  scroll-margin-top: 115px;
 }
 
 .menu-category-title {
@@ -630,6 +686,30 @@ body {
 }
 
 @media (max-width: 768px) {
+  .category-nav {
+    padding: 10px 8px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .category-nav-grid {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .category-link {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    font-size: .85rem;
+    white-space: nowrap;
+  }
+
+  .menu-category {
+    scroll-margin-top: 105px;
+  }
+
   .table-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -708,6 +788,20 @@ img {
   </header>
 
   <section class="menu-section">
+    <nav class="category-nav" aria-label="Pilih Kategori Menu">
+      <div class="category-nav-title">Pilih Kategori Menu</div>
+      <div class="category-nav-grid">
+        <a class="category-link" href="#mieKriting">🍜 Mie Kriting</a>
+        <a class="category-link" href="#Polos">🍛 Polos</a>
+        <a class="category-link" href="#mieLain">🍝 Mie MERAH HIJAU</a>
+        <a class="category-link" href="#kwetiawBihun">🍲 Kwetiau & Bihun</a>
+        <a class="category-link" href="#nasi">🍚 Nasi</a>
+        <a class="category-link" href="#mieGoreng">🥟 Gorengan</a>
+        <a class="category-link" href="#lainLain">🍛 Lain-lain</a>
+        <a class="category-link" href="#minuman">🥤 Minuman</a>
+      </div>
+    </nav>
+
     <div class="table-selection">
       <h2 class="menu-title">Pilih Meja</h2>
       <div class="table-grid" id="tableGrid"></div>
@@ -725,7 +819,7 @@ img {
     </div>
 	
     <div class="menu-category" id="mieLain">
-      <h3 class="menu-category-title">🍝 MIE FAMILY</h3>
+      <h3 class="menu-category-title">🍝 MIE MERAH HIJAU</h3>
       <div class="menu-grid"></div>
     </div>
     
@@ -875,7 +969,8 @@ img {
       ],
       mieGoreng: [
 		{n:'YONG TAHU GORENG (ISI 3)',i:'gambar/yong tahu 3.jpg', soldOut: false},
-        {n:'PANGSIT GORENG',i:'gambar/pangsit_goreng.webp', soldOut: false},
+        {n:'PANGSIT GORENG (SATUAN)',i:'gambar/pangsit_goreng.webp', soldOut: false},
+		{n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp', soldOut: false},
         {n:'BAKSO GORENG (ISI 2)',i:'gambar/bakso goreng.webp', soldOut: false},
       ],
       kwetiawBihun: [
@@ -907,6 +1002,7 @@ img {
       nasi: [
         {n:'NASI CAMPUR / HAINAM',i:'gambar/NASI_HAINAM.webp', soldOut: false},
         {n:'NASI TIM',i:'gambar/Nasi_Tim.webp', soldOut: false},
+		{n:'NASI PUTIH (1/2)',i:'gambar/Nasi putih.webp', soldOut: false},
 		{n:'NASI PUTIH',i:'gambar/Nasi putih.webp', soldOut: false},
       ],
       lainLain: [
@@ -918,7 +1014,6 @@ img {
 		{n:'PANGSIT ISI 5',i:'gambar/baso_n_pangsit.webp', soldOut: false},
 		{n:'BASO ISI 10',i:'gambar/baso_n_pangsit.webp', soldOut: false},
 		{n:'BASO ISI 5',i:'gambar/baso_n_pangsit.webp', soldOut: false},
-        {n:'NGOHIANG AYAM',i:'gambar/Ngohiong.webp', soldOut: false},
         {n:'TELOR PINDANG',i:'gambar/Telor_Pindang.webp', soldOut: false},
       ],
       minuman: [
@@ -1058,6 +1153,31 @@ img {
         uO();
       }
     });
+
+    // Category navigation: highlight kategori yang sedang aktif saat diklik/scroll
+    const categoryLinks = document.querySelectorAll('.category-link');
+    const menuCategories = document.querySelectorAll('.menu-category');
+
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        categoryLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    const categoryObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeLink = document.querySelector(`.category-link[href="#${entry.target.id}"]`);
+          if (activeLink) {
+            categoryLinks.forEach(link => link.classList.remove('active'));
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    }, { rootMargin: '-120px 0px -60% 0px', threshold: 0.1 });
+
+    menuCategories.forEach(category => categoryObserver.observe(category));
 
     // WhatsApp button
     document.getElementById('whatsappBtn').addEventListener('click', () => {
